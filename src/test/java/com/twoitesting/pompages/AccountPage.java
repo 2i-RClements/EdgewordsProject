@@ -22,7 +22,7 @@ public class AccountPage {
     WebElement loginButton;
 
     public AccountPage(WebDriver driver) {
-        this.driver = driver;
+        this.driver = Hooks.driver;
         PageFactory.initElements(driver, this);
         this.baseURL = Hooks.baseURL;
     }

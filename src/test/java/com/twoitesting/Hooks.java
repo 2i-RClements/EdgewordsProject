@@ -8,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Hooks {
 
-    static WebDriver driver;
-    public static final String baseURL = " https://www.edgewordstraining.co.uk/demo-site/";
+    public static WebDriver driver;
+    public static String baseURL = " https://www.edgewordstraining.co.uk/demo-site/";
 
     @Before
     public void SetUp() {

@@ -31,36 +31,24 @@ public class StepDefinitions {
         AccountPage accountPage = new AccountPage(driver);
         accountPage.verifyLogin();
     }
-    @When("I navigate to the shop")
-    public void i_navigate_to_the_shop() {
+
+    @Given("I have an item in my cart")
+    public void i_have_an_item_in_my_cart() throws InterruptedException {
+        ShopPage shopPage = new ShopPage(driver);
+        shopPage.verifyPage();
+        shopPage.selectRandomProduct();
+        shopPage.viewCart();
+    }
+    @When("I apply the discount code {string}")
+    public void i_apply_the_discount_code(String string) {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-    @Then("I am on the shop page")
-    public void i_am_on_the_shop_page() {
+    @Then("I should receive a {int}% discount")
+    public void i_should_receive_a_discount(Integer int1) {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
 
-    @Given("I am on the cart page")
-    public void i_am_on_the_cart_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @When("I navigate to the account page")
-    public void i_navigate_to_the_account_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @When("log out")
-    public void log_out() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("I should successfully log out")
-    public void i_should_successfully_log_out() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
 
 }
