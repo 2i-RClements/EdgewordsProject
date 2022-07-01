@@ -27,26 +27,16 @@ public class ShopPage {
 
     public void verifyPage(){
         driver.get(baseURL + "shop/");
-        System.out.println("I am at the shop");
         driver.findElement(By.xpath("//*[@id=\"main\"]/header/h1")); //My account h1
-        System.out.println("I have seen h1");
     }
 
-    public void selectRandomProduct() throws InterruptedException { //Add a random product to cart
+    public void selectRandomProduct() { //Add a random product to cart
         List<WebElement> allProducts = driver.findElements(By.linkText("Add to cart"));
-        System.out.println(allProducts.size());
         Random rand = new Random();
         int randomProduct = rand.nextInt(allProducts.size());
         WebElement chosenProduct = allProducts.get(randomProduct);
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].click()", chosenProduct);
-
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//        wait.until(ExpectedConditions.elementToBeClickable(chosenProduct)).click();
-//        Thread.sleep(10000);
-//        allProducts.get(randomProduct).click();
-
-        System.out.println("I have chosen a product");
     }
 
     public void viewCart() {
@@ -56,6 +46,5 @@ public class ShopPage {
         WebElement cartButton = driver.findElement(By.linkText("View cart"));
         jse.executeScript("arguments[0].click()", cartButton);
         driver.findElement(By.xpath("//*[@id=\"post-5\"]/header/h1"));
-        System.out.println("I am on the cart");
     }
 }

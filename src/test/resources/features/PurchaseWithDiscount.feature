@@ -11,13 +11,13 @@ Feature: Purchase With Discount
 #    Given I navigate to the Shop
 #    When I add an item to my cart
 #    And View my cart
-#    And Use the discount code "edgewords"
+#    And Use the coupon code "edgewords"
 #    Then I should receive 15% discount
 #    And The total after coupon and shipping should be correct
 
   Scenario: Apply Discount
     Given I have an item in my cart
-    When I apply the discount code "edgewords"
+    When I apply the coupon code "edgewords"
     Then I should receive a 15% discount
 
 

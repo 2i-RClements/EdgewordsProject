@@ -2,6 +2,7 @@ package com.twoitesting;
 
 import io.cucumber.java.en.*;
 import com.twoitesting.Hooks.*;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import com.twoitesting.pompages.*;
 
@@ -11,9 +12,9 @@ public class StepDefinitions {
     String baseURL;
 
 
-    public StepDefinitions(Hooks hooks) {
-        this.driver = hooks.driver;
-        this.baseURL = hooks.baseURL;
+    public StepDefinitions() {
+        this.driver = Hooks.driver;
+        this.baseURL = Hooks.baseURL;
     }
 
     @Given("I am on the account page")
@@ -33,21 +34,22 @@ public class StepDefinitions {
     }
 
     @Given("I have an item in my cart")
-    public void i_have_an_item_in_my_cart() throws InterruptedException {
+    public void i_have_an_item_in_my_cart(){
         ShopPage shopPage = new ShopPage(driver);
         shopPage.verifyPage();
         shopPage.selectRandomProduct();
         shopPage.viewCart();
     }
-    @When("I apply the discount code {string}")
-    public void i_apply_the_discount_code(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @When("I apply the coupon code {string}")
+    public void i_apply_the_coupon_code(String couponCode) {
+        CartPage cartPage = new CartPage(driver);
+        cartPage.enterCode(couponCode);
     }
     @Then("I should receive a {int}% discount")
-    public void i_should_receive_a_discount(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void i_should_receive_a_discount(Integer discount){
+        CartPage cartPage = new CartPage(driver);
+        cartPage.verifyDiscount(discount);
+        //TODO remove all items from cart and logout
     }
 
 
