@@ -10,5 +10,5 @@ Feature: Checkout
   Scenario: Checkout
     Given I have an item in my cart
     #This feels like a lot but I assume that's how you'd set it up if you eventually wanted to data drive this?
-    When I use the valid first name "Test", last name "Tester", company name "Test", street address "404 Test Street", address line two "Test", city "Test", county "Test", phone "07777777777" to go through checkout
+    When I use the valid first name "Test", last name "Tester", company name "Test", street address "404 Test Street", address line two "Test", city "Test", county "Test", postcode "ct110pb", phone "07777777777" to go through checkout
     Then I should be able to find my order

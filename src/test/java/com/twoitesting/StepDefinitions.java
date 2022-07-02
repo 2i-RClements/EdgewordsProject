@@ -65,21 +65,27 @@ public class StepDefinitions {
         accountPage.logout();
     }
 
-    @When("I use the valid first name {string}, last name {string}, company name {string}, street address {string}, address line two {string}, city {string}, county {string}, phone {string} to go through checkout")
-    public void i_use_the_valid_first_name_last_name_company_name_street_address_address_line_city_county_phone_to_go_through_checkout(String firstName, String lastName, String company, String streetAddress, String addressLine2, String city, String county, String phone) throws InterruptedException {
+    @When("I use the valid first name {string}, last name {string}, company name {string}, street address {string}, address line two {string}, city {string}, county {string}, postcode {string}, phone {string} to go through checkout")
+    public void i_use_the_valid_first_name_last_name_company_name_street_address_address_line_city_county_phone_to_go_through_checkout(String firstName, String lastName, String company, String streetAddress, String addressLine2, String city, String county, String postcode, String phone){
 
         CartPage cartPage = new CartPage(sharedDict);
         cartPage.proceedToCheckout();
         CheckoutPage checkoutPage = new CheckoutPage(sharedDict);
-        checkoutPage.fillDetails(firstName, lastName, company, streetAddress, addressLine2, city, county, phone);
+        checkoutPage.fillDetails(firstName, lastName, company, streetAddress, addressLine2, city, county, postcode, phone);
         checkoutPage.selectPayByCheque();
         checkoutPage.placeOrder();
     }
 
     @Then("I should be able to find my order")
     public void i_should_be_able_to_find_my_order() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        OrderReceivedPage orderReceivedPage = new OrderReceivedPage(sharedDict);
+        orderReceivedPage.captureOrderNumber();
+        orderReceivedPage.navigateToAccount();
+        AccountPage accountPage = new AccountPage(sharedDict);
+        accountPage.viewOrders();
+        MyOrdersPage myOrdersPage = new MyOrdersPage(sharedDict);
+        myOrdersPage.verifyOrder();
+        myOrdersPage.logout();
     }
 
 

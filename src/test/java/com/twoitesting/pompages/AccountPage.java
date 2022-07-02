@@ -57,4 +57,10 @@ public class AccountPage {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].click()", driver.findElement(By.linkText("Logout")));
     }
+
+    public void viewOrders(){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", driver.findElement(By.linkText("Orders")));
+    }
+
 }
