@@ -78,5 +78,9 @@ public class CartPage {
 
     }
 
+    public void proceedToCheckout(){
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].click()", driver.findElement(By.linkText("Proceed to checkout")));
+    }
 
 }
