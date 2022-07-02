@@ -1,6 +1,7 @@
 package com.twoitesting.pompages;
 
 import com.twoitesting.Hooks;
+import com.twoitesting.SharedDictionary;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,21 +15,20 @@ import java.util.List;
 import java.util.Random;
 
 public class ShopPage {
+
+    private SharedDictionary sharedDict;
     String baseURL;
     WebDriver driver;
 
 
 
-    public ShopPage(WebDriver driver) {
-        this.driver = Hooks.driver;
+    public ShopPage(SharedDictionary sharedDict) {
+        this.sharedDict = sharedDict; //Put the passed instance of sharedDict in the field.
+        driver = (WebDriver) sharedDict.readDict("webdriver");
         PageFactory.initElements(driver, this);
         this.baseURL = Hooks.baseURL;
     }
 
-    public void verifyPage(){
-        driver.get(baseURL + "shop/");
-        driver.findElement(By.xpath("//*[@id=\"main\"]/header/h1")); //My account h1
-    }
 
     public void selectRandomProduct() { //Add a random product to cart
         List<WebElement> allProducts = driver.findElements(By.linkText("Add to cart"));
@@ -40,7 +40,7 @@ public class ShopPage {
     }
 
     public void viewCart() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("View cart")));
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         WebElement cartButton = driver.findElement(By.linkText("View cart"));

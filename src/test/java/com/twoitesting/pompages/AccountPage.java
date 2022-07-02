@@ -1,13 +1,18 @@
 package com.twoitesting.pompages;
 
 import com.twoitesting.Hooks;
+import com.twoitesting.SharedDictionary;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AccountPage {
+
+
+    private SharedDictionary sharedDict; // Field for shared dictionary to use in this class
 
     String baseURL;
     WebDriver driver;
@@ -21,16 +26,17 @@ public class AccountPage {
     @FindBy(name = "login")
     WebElement loginButton;
 
-    public AccountPage(WebDriver driver) {
-        this.driver = Hooks.driver;
+    public AccountPage(SharedDictionary sharedDict) {
+        this.sharedDict = sharedDict; //Put the passed instance of sharedDict in the field.
+        driver = (WebDriver) sharedDict.readDict("webdriver");
         PageFactory.initElements(driver, this);
         this.baseURL = Hooks.baseURL;
     }
 
 
-    public void verifyPage(){
+    public void loadAccountPage(){
         driver.get(baseURL + "my-account/");
-        driver.findElement(By.xpath("//*[@id=\"post-7\"]/header/h1")); //My account h1
+
     }
 
     public void login(String username, String password) {
@@ -41,5 +47,14 @@ public class AccountPage {
 
     public void verifyLogin(){
         driver.findElement(By.linkText("Logout")); //If logout button is visible user should be logged in.
+    }
+
+    public void navigateToShop(){
+        driver.findElement(By.linkText("Shop")).click();
+    }
+
+    public void logout(){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].click()", driver.findElement(By.linkText("Logout")));
     }
 }
