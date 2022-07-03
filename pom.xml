@@ -101,7 +101,6 @@
         </dependency>
 
 
-
     </dependencies>
 
     <build>
@@ -123,14 +122,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repository>
-        <id>central</id>
-        <name>Central Repository</name>
-        <url>https://repo.maven.apache.org/maven2</url>
-        <layout>default</layout>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
 </project>

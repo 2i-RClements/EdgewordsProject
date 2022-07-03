@@ -2,10 +2,7 @@ package com.twoitesting.pompages;
 
 import com.twoitesting.Hooks;
 import com.twoitesting.SharedDictionary;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -63,17 +60,25 @@ public class CheckoutPage {
         this.baseURL = Hooks.baseURL;
     }
 
-    public void fillDetails(String firstName, String lastName, String company, String streetAddress, String addressLine2, String city, String postcode, String county, String phone){
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].value='" + firstName + "';", firstNameField);
-        jse.executeScript("arguments[0].value='" + lastName + "';", lastNameField);
-        jse.executeScript("arguments[0].value='" + company + "';", companyField);
-        jse.executeScript("arguments[0].value='" + streetAddress + "';", streetAddressField);
-        jse.executeScript("arguments[0].value='" + addressLine2 + "';", addressLine2Field);
-        jse.executeScript("arguments[0].value='" + city + "';", cityField);
-        jse.executeScript("arguments[0].value='" + county + "';", countyField);
-        jse.executeScript("arguments[0].value='" + postcode + "';", postcodeField);
-        jse.executeScript("arguments[0].value='" + phone + "';", phoneField);
+    public void fillDetails(String firstName, String lastName, String company, String streetAddress, String addressLine2, String city, String county, String postcode, String phone){
+        firstNameField.clear();
+        firstNameField.sendKeys(firstName);
+        lastNameField.clear();
+        lastNameField.sendKeys(lastName);
+        companyField.clear();
+        companyField.sendKeys(company);
+        streetAddressField.clear();
+        streetAddressField.sendKeys(streetAddress);
+        addressLine2Field.clear();
+        addressLine2Field.sendKeys(addressLine2);
+        cityField.clear();
+        cityField.sendKeys(city);
+        countyField.clear();
+        countyField.sendKeys(county);
+        postcodeField.clear();
+        postcodeField.sendKeys(postcode);
+        phoneField.clear();
+        phoneField.sendKeys(phone);
     }
 
     public void selectPayByCheque() {
