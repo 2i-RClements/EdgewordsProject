@@ -65,7 +65,7 @@ public class CartPage {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("arguments[0].value='0'", el);
             if ( el == list.get(list.size()-1)) { //If element is the last one to remove
-                el.sendKeys(Keys.ENTER);//Necessary as Update Cart Button is disabled even with javascript clicks
+                el.sendKeys(Keys.ENTER);//Necessary as Update Cart Button appears to be disabled even with javascript clicks
             }
         }
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));

@@ -61,7 +61,7 @@ public class CheckoutPage {
     }
 
     public void fillDetails(String firstName, String lastName, String company, String streetAddress, String addressLine2, String city, String county, String postcode, String phone){
-        firstNameField.clear();
+        firstNameField.clear(); //clear fields before sending information to deal with autofill
         firstNameField.sendKeys(firstName);
         lastNameField.clear();
         lastNameField.sendKeys(lastName);

@@ -30,7 +30,7 @@ public class OrderReceivedPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#post-6 > div > div > div > ul > li.woocommerce-order-overview__order.order > strong")));
         String orderNumber =  driver.findElement(By.cssSelector("#post-6 > div > div > div > ul > li.woocommerce-order-overview__order.order > strong")).getText();
         sharedDict.addDict("order number", orderNumber);
-        System.out.println(orderNumber);
+        System.out.println("Order Number: " + orderNumber);
     }
 
     public void navigateToAccount() {

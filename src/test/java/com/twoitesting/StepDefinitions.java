@@ -66,7 +66,7 @@ public class StepDefinitions {
     }
 
     @When("I use the valid first name {string}, last name {string}, company name {string}, street address {string}, address line two {string}, city {string}, county {string}, postcode {string}, phone {string} to go through checkout")
-    public void i_use_the_valid_first_name_last_name_company_name_street_address_address_line_city_county_phone_to_go_through_checkout(String firstName, String lastName, String company, String streetAddress, String addressLine2, String city, String county, String postcode, String phone){
+    public void i_use_the_valid_first_name_last_name_company_name_street_address_address_line_city_county_phone_to_go_through_checkout(String firstName, String lastName, String company, String streetAddress, String addressLine2, String city, String county, String postcode, String phone) {
 
         CartPage cartPage = new CartPage(sharedDict);
         cartPage.proceedToCheckout();
