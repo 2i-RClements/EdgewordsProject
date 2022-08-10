@@ -26,10 +26,12 @@ public class CartPage {
     @FindBy(css = "td[data-title=\"Subtotal\"]")
     WebElement subtotalFromTable;
 
-    @FindBy(css = "#post-5 > div > div > div > div > table > tbody > tr.shipping > td > span") //find shipping cost
+   // @FindBy(css = "#post-5 > div > div > div > div > table > tbody > tr.shipping > td > span") //find shipping cost
+   @FindBy(css = "#shipping_method > li > label > span > bdi")
     WebElement shippingFromTable;
 
-    @FindBy(css = "#post-5 > div > div > div > div > table > tbody > tr.order-total > td > strong > span") //find total cost
+    //@FindBy(css = "#post-5 > div > div > div > div > table > tbody > tr.order-total > td > strong > span") //find total cost
+    @FindBy(css = "#post-5 > div > div > div.cart-collaterals > div > table > tbody > tr.order-total > td > strong > span > bdi") //find total cost
     WebElement totalFromTable;
 
 
